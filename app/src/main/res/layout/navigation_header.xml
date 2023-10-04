@@ -110,24 +110,19 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/baseline_map_24"
+            android:src="@drawable/baseline_pending_actions_24"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Maps"
+            android:text="Pending Payments"
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:textStyle="bold"
 
             />
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginLeft="110dp"
-            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -152,12 +147,7 @@
             android:textSize="14dp"
             android:textStyle="bold"
             />
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginLeft="67dp"
-            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -171,24 +161,19 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/baseline_emoji_events_24"
+            android:src="@drawable/baseline_payments_24"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reward History"
+            android:text="Make Payment"
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:textStyle="bold"
 
             />
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginLeft="48dp"
-            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -213,81 +198,16 @@
             android:textStyle="bold"
 
             />
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginLeft="31dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/rel7"
-        android:layout_below="@+id/rel6"
-        android:background="@drawable/back"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        >
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_ondemand_video_24"
-            />
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Instructions and Demo"
-        android:layout_marginLeft="10dp"
-        android:textColor="@color/black"
-        android:textSize="14dp"
-        android:textStyle="bold"
 
-        />
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginLeft="01dp"
-            />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/rel8"
-        android:layout_below="@+id/rel7"
-        android:background="@drawable/back"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        >
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_search_24"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find Bins"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:textSize="14dp"
-            android:textStyle="bold"
 
-            />
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginLeft="85dp"
-            />
-    </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/back"
         android:id="@+id/rel4"
-        android:layout_below="@id/rel8"
+        android:layout_below="@id/rel3"
+        android:layout_marginTop="340dp"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -320,10 +240,5 @@
             android:layout_marginLeft="85dp"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/white"
-        android:layout_below="@id/rel5"
-        />
+
 </RelativeLayout>

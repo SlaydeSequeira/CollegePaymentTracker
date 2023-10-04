@@ -7,6 +7,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +30,11 @@ import com.bumptech.glide.Glide;
 import com.example.smartbin.AadharVerification;
 import com.example.smartbin.AccountHistory;
 import com.example.smartbin.EditProfile;
+import com.example.smartbin.Help;
 import com.example.smartbin.MainActivity;
 import com.example.smartbin.MainActivity3;
-import com.example.smartbin.MessageActivity;
 import com.example.smartbin.R;
+import com.example.smartbin.Rewards;
 import com.example.smartbin.model.Users;
 import com.example.smartbin.prototype;
 import com.example.smartbin.prototype2;
@@ -53,9 +55,6 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
-
-import android.provider.MediaStore;
-
 import java.util.Objects;
 
 public class ProfileFragment extends Fragment {
@@ -145,7 +144,7 @@ public class ProfileFragment extends Fragment {
         r3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AadharVerification.class);
+                Intent i = new Intent(getActivity(), Rewards.class);
                 startActivity(i);
             }
         });
@@ -153,7 +152,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(), MainActivity.class)
+                startActivity(new Intent(getActivity(), Help.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
@@ -172,7 +171,7 @@ public class ProfileFragment extends Fragment {
                 String b = String.valueOf(snapshot.child("points").child("redeemed").getValue());
                 String c = String.valueOf(snapshot.child("points").child("received").getValue());
                 int d = Integer.parseInt(c) - Integer.parseInt(b);
-                Pts.setText(d + " points");
+                Pts.setText("Balance: Rs "+d);
                 Id.setText("ID: " + a);
             }
 
@@ -182,26 +181,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Users user = dataSnapshot.getValue(Users.class);
-                if (user != null) {
-                    username.setText(user.getUsername());
-
-                    if ("default".equals(user.getImageURL())) {
-                        imageView.setImageResource(R.mipmap.ic_launcher);
-                    } else {
-                        Glide.with(requireContext()).load(user.getImageURL()).into(imageView);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        updateProfileData(); // Call the method to update profile data
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,7 +214,7 @@ public class ProfileFragment extends Fragment {
             transaction.addToBackStack(null);
             transaction.commit();
             isPicFragmentOpen = true;
-            Toast.makeText(getActivity(), "Tap Image again to close", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Tap Image again to close", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -245,6 +225,31 @@ public class ProfileFragment extends Fragment {
                 fragmentManager.popBackStack();
                 isPicFragmentOpen = false;
             }
+        }
+    }
+
+    private void updateProfileData() {
+        if (isAdded()) { // Check if the fragment is attached to an activity
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Users user = dataSnapshot.getValue(Users.class);
+                    if (user != null) {
+                        username.setText(user.getUsername());
+
+                        if ("default".equals(user.getImageURL())) {
+                            imageView.setImageResource(R.mipmap.ic_launcher);
+                        } else {
+                            Glide.with(requireContext()).load(user.getImageURL()).into(imageView);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
@@ -317,4 +322,5 @@ public class ProfileFragment extends Fragment {
             }
         }
     }
+
 }

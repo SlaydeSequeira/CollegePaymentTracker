@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Social Events"
+        android:text="College Events"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         />
     <RelativeLayout
         android:layout_width="match_parent"

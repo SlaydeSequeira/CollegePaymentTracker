@@ -5,98 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Rewards"
-    android:background="#00BCD4"
+    android:background="#FFFCE0"
     >
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/image"
-        android:src="@drawable/baseline_arrow_back_ios_24"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="Available Rewards"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text1"
-        android:layout_below="@+id/text"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="Total Points: 20"
-        android:textSize="20dp"
-        android:textColor="#FFEB3B"
-        />
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:cardCornerRadius="50dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/white"
+        >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/text1"
-        android:background="@drawable/draw"
-        >
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:layout_marginTop="20dp"
-    >
+        android:orientation="vertical"
 
+        android:padding="16dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:text="Most Redeemed Offers"
+            android:text="Payment Gateway"
+            android:textSize="24sp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:id="@+id/text4"
-            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"/>
 
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/cir"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:reverseLayout="false"
-            android:layout_below="@+id/text4"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:text="More Offers"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_below="@+id/recyclerView"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/text5"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView1"
+            android:textColorHint="#989898"
+            android:layout_height="50dp"
+            android:hint="Username"/>
+
+        <EditText
+            android:id="@+id/costEditText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/text5"
-            />
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#989898"
+            android:background="@drawable/cir"
+            android:hint="Cost Paid"
+            android:inputType="numberDecimal"/>
 
-    </RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make Payment"
+            android:id="@+id/button"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:onClick="makePayment"/>
 
-</ScrollView>
-
-    </RelativeLayout>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

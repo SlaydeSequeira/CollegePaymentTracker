@@ -127,23 +127,7 @@ public class HomePage extends AppCompatActivity {
         r1 = headerView.findViewById(R.id.rel1);
         r2 = headerView.findViewById(R.id.rel2);
         r3 = headerView.findViewById(R.id.rel3);
-        r5 = headerView.findViewById(R.id.rel5);
-        r7 = headerView.findViewById(R.id.rel7);
-        r8 = headerView.findViewById(R.id.rel8);
-        r8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, MainActivity4.class);
-                startActivity(i);
-            }
-        });
-        r7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomePage.this,Instruction.class);
-                startActivity(i);
-            }
-        });
+
         LinearLayout r6 = headerView.findViewById(R.id.rel6);
 
         r6.setOnClickListener(new View.OnClickListener() {
@@ -230,25 +214,18 @@ public class HomePage extends AppCompatActivity {
         r2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, MainActivity2.class);
+                Intent i = new Intent(HomePage.this, AccountHistory.class);
                 startActivity(i);
             }
         });
         r3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomePage.this,AccountHistory.class);
+                Intent i = new Intent(HomePage.this,Rewards.class);
                 startActivity(i);
             }
         });
-        r5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(HomePage.this, MainActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            }
-        });
+
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

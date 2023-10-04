@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.smartbin'
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.example.smartbin"
         minSdk 28
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -55,4 +55,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'androidx.fragment:fragment:1.4.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

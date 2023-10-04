@@ -2,6 +2,7 @@ package com.example.smartbin.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,12 +58,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         // its in reverse order so the latest post comes on top
         // for undo reverse do(int position = pos;)
         holder.textView.setText(data[position]);
+        if(data2[position]=="Unpaid") {
+            holder.textView2.setTextColor(Color.parseColor("#FF0000"));
+        }
+        else{
+            holder.textView2.setTextColor(Color.parseColor("#00E409"));
+
+        }
         holder.textView2.setText(data2[position]);
         holder.id.setText(Author[position]);
         Glide.with(context)
                 .load(picture[position])
-                .placeholder(R.drawable.baseline_emoji_events)
-                .error(R.drawable.baseline_emoji_events)
+                .placeholder(R.drawable.baseline_monetization_on_24)
+                .error(R.drawable.baseline_monetization_on_24)
                 .into(holder.imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

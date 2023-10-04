@@ -72,20 +72,26 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MyUsers")
                 .child(fuser.getUid());
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Users user = dataSnapshot.getValue(Users.class);
-                if (user != null) {
-                    t1.setText("Hello, "+user.getUsername());
+                // Check if the fragment is attached to an activity
+                if (isAdded()) {
+                    Users user = dataSnapshot.getValue(Users.class);
+                    if (user != null) {
+                        t1.setText("Hello, " + user.getUsername());
 
-                    if ("default".equals(user.getImageURL())) {
-                        imageView.setImageResource(R.mipmap.ic_launcher);
-                    } else {
-                        Glide.with(requireContext()).load(user.getImageURL()).into(i1);
+                        if ("default".equals(user.getImageURL())) {
+                            imageView.setImageResource(R.mipmap.ic_launcher);
+                        } else {
+                            // Use requireContext() here since it's safe
+                            Glide.with(requireContext()).load(user.getImageURL()).into(i1);
+                        }
                     }
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -149,14 +155,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        LatLng LatLng = new LatLng(19.044329, 72.820380);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng, 15));
         // Customize the map as needed
         // Create a list of places with their coordinates
         List<Place> places = new ArrayList<>();
-        places.add(new Place("Place 1", 19.118940, 72.880755));
-        places.add(new Place("Place 2", 19.263434, 72.968624));
-        places.add(new Place("Place 3", 19.194976, 72.835818));
-        places.add(new Place("Place 4", 18.943044, 72.828842));
-        places.add(new Place("Place 5", 19.044329, 72.820380));
+        places.add(new Place("Fr Conceicao Rodrigues College Of Engineering", 19.044329, 72.820380));
         // Add markers for each place
         for (Place place : places) {
             LatLng placeLatLng = new LatLng(place.getLatitude(), place.getLongitude());
@@ -185,7 +189,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                 @Override
                 public boolean onMyLocationButtonClick() {
                     if (lastKnownLocation != null) {
-                        LatLng currentLatLng = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+                        LatLng currentLatLng = new LatLng(19.044329, 72.820380);
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15)); // Adjust the zoom level as needed
                     }
                     return true;
@@ -287,8 +291,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
 
     private void updateCurrentLocation(Location location) {
         // Handle location updates here
-        double latitude = location.getLatitude();
-        double longitude = location.getLongitude();
+        double latitude = 19.044329;
+        double longitude = 72.820380;
         String message = "Latitude: " + latitude + "\nLongitude: " + longitude;
       //  Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
     }
